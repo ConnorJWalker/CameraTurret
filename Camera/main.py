@@ -1,4 +1,4 @@
 import application
 
-app = application.Application()
-app.start(True)
+app = application.Application(True)
+app.start()
