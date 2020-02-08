@@ -15,14 +15,18 @@ class Application:
                 faces = self.detector.detect(frame)
                 self.render(faces, frame)
             else:
-                # print error
                 print("Couldn't capture image")
 
             if cv2.waitKey(1) & 0xFF == ord(u"\u0020"):
                 break
 
-    def render(slef, faces, frame):
-        for (x, y, w, h) in faces:
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0))
+    def render(self, faces, frame):
+        closest = self.detector.getClosestIndex(faces, frame)
+
+        for i in range(len(faces)):
+            x, y, w, h = faces[i]
+            print((closest, i))
+            colour = (0, 0, 255) if i == closest else (255, 0, 0)
+            cv2.rectangle(frame, (x, y), (x + w, y + h), colour)
 
         cv2.imshow("Detected Faces", frame)
