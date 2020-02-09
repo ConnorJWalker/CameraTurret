@@ -13,7 +13,8 @@ class Application:
 
             if success:
                 faces = self.detector.detect(frame)
-                self.render(faces, frame)
+                if self.shouldRender:
+                    self.render(faces, frame)
             else:
                 print("Couldn't capture image")
 
