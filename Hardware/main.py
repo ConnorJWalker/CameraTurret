@@ -9,9 +9,9 @@ yServo.angle = 120
 sleep(10)
 
 while True:
-    for i = 0 in range(180):
+    for i in range(180):
         xServo.angle = i
         sleep(2)
 
-    for i = 100 in range(108, 0, -1):
+    for i in range(180, 0, -1):
         xServo.angle = i
